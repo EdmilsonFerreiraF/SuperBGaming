@@ -1,0 +1,843 @@
+/*////////////////////////////////////// Variáveis ////////////////////////////////////*/
+$color-primary: #ffa500;
+$color-secondary: #a500ff;
+$color-tertiary: #00ffa5;
+$color-lg-primary: linear-gradient(to bottom, rgba(255, 165, 0, .5), rgba(255, 183, 51, .5));
+$color-lg-secondary: linear-gradient(to bottom, rgba(165, 0, 255, .7), rgba(170, 25, 265, .7));
+$color-lg-secondary2: linear-gradient(to bottom, rgba(165, 0, 255, .25), rgba(170, 25, 265, .25));
+$color-lg-tertiary: linear-gradient(to bottom, rgba(0, 255, 165, .7), rgba(50, 255, 183, .7));
+$color-lg-tertiary2: linear-gradient(to bottom, rgba(0, 255, 165, .25), rgba(50, 255, 183, .25));
+$color-lg-mix: linear-gradient(to bottom, rgba(165, 0, 255, .7), rgba(0, 255, 165, .7));
+$color-lg-hidden: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+
+$color-white-1: white;
+$color-white-2: whitesmoke;
+$color-black: rgb(30, 30, 30);
+$color-black-trans: rgba(0, 0, 0, 0.8);
+
+$font-primary: 'Titillium Web',
+sans-serif;
+
+// Breakpoints
+$bp-larger: 93.75em; // 1500px
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 43.7em; // 700px 
+$bp-small: 31.5em; // 500px
+
+/*/////////////////////////////////////// GERAIS //////////////////////////////////////*/
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+
+    margin: 0;
+    padding: 0;
+}
+
+*:hover,
+*:focus {
+    transition: all .2s linear;
+}
+
+html {
+    //font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-gap: 3rem;
+
+    color: $color-black;
+
+    font-family: $font-primary;
+    font-weight: 300;
+    line-height: 1.6;
+
+}
+
+img {
+    width: 100%;
+}
+
+.logo {
+    padding: .1rem;
+
+}
+
+.presentation__img2,
+.presentation__bg,
+.novices__bg,
+.novices__bg2,
+.tips__bg,
+.tips__bg2,
+.aside {
+    border-radius: .4rem;
+}
+
+@media only screen and (max-width: $bp-small) {
+    html {
+        font-size: 51%;
+    }
+}
+
+@media only screen and (min-width: $bp-small) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media only screen and (min-width: $bp-medium) {
+    html {
+        font-size: 60%;
+    }
+}
+
+@media only screen and (min-width: $bp-large) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media only screen and (min-width: $bp-largest) {
+    html {
+        font-size: 80%;
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-rows: minmax(4rem, 20%) repeat(2, minmax(min-content, 1fr));
+    grid-gap: 3%;
+
+    @media only screen and (max-width: $bp-small) {
+        grid-template-columns: 3% 90% 7%;
+    }
+
+    @media only screen and (min-width: $bp-small) {
+        grid-template-columns: minmax(4rem, 1fr) 70% minmax(4rem, 1fr);
+    }
+
+    @media only screen and (min-width: $bp-large) {
+        grid-template-columns: minmax(4rem, 2fr) 50% minmax(250px, 22%) minmax(4rem, 1fr);
+    }
+}
+
+@media only screen and (max-width: 75em) {
+    .container {
+        font-size: 50%;
+    }
+}
+
+.title {
+    font-size: 3rem;
+    font-family: inherit;
+    text-align: center;
+}
+
+.sub-title {
+    font-size: 2.5rem;
+    font-family: inherit;
+    text-align: center;
+}
+
+.text {
+    font-size: 1.3rem;
+    font-family: inherit;
+}
+
+/*////////////////////////////////////////    HEADING    ////////////////////////////////
+///////*/
+.header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    justify-content: center;
+    background-image: linear-gradient(to bottom, #ffa500, #ffb733);
+
+    &__logo {
+        height: 1.1rem;
+        margin-top: -.45rem;
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        font-family: 'Tajawal', cursive;
+        font-size: 1.4rem;
+    }
+
+    &__search {
+        display: flex;
+    }
+
+    &__ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    &__li {
+        padding: 2.1rem 1rem;
+        color: $color-white-1;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: .4rem;
+        align-self: center;
+
+        &-aboutus {
+            width: 9rem;
+        }
+    }
+
+    &__li:hover {
+        background-image: linear-gradient(to top, #ffa500, #ffb733);
+    }
+
+    &__li:active {
+        color: darkgray;
+        transition: none;
+    }
+
+    .active,
+    .btn:hover {
+        background-image: linear-gradient(to top, #ffa500, #ffb733);
+    }
+}
+
+.search__icon {
+    z-index: 99999;
+}
+
+
+/*////////////////////////////////////////    MAIN    ///////////////////////////////////
+///////*/
+.main {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    grid-gap: 2rem;
+    background-color: whitesmoke;
+    padding: 1rem;
+
+    &__presentation {
+        display: grid;
+        grid-row: 1 / 2;
+
+        height: 60rem;
+    }
+
+    &__novices-tips {
+        display: grid;
+
+        @media only screen and (min-width: $bp-largest) {
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(110px, 1fr));
+            grid-gap: 1rem;
+        }
+
+        @media only screen and (max-width: $bp-largest) {
+            grid-template-columns: 100%;
+            grid-template-rows: repeat(auto-fit, minmax(140px, 50%));
+            grid-gap: 1rem;
+        }
+
+        /*@media only screen and (max-width: $bp-small) {
+        grid-template-columns: 100%;
+    }*/
+    }
+
+    .presentation {
+
+        &__img {
+            display: grid;
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+
+            width: 100%;
+            border-radius: .4rem;
+
+            /*background: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcxDs1XKRstyYx9vH.ciT4gAng4D.wWztnkj212IOlx0UVfZQcCUFlMRV1ljf5SBid9V5MJSw6WiQ3gbngybC0JwFn_cVrOJgeDco_MXI6QnteMuL14THo8S1wAuYoPOuA2bH84HzXP_5LAjHeXbWBA4Hhnh1rba4ttnCPs2GJd9s-&h=720&w=1280&format=jpg") no-repeat center;*/
+
+            /*background: url("http://www.kinyu-z.net/data/wallpapers/178/1328703.jpg") no-repeat center;*/
+
+            background: url("../img/presentation__img.jpg") no-repeat center;
+            background-size: cover;
+        }
+
+        &__bg {
+            display: grid;
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+
+            border-radius: .4rem;
+
+            background: $color-lg-primary;
+            background-blend-mode: screen;
+
+        }
+
+        &__h1 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+
+            color: $color-primary;
+            font-family: 'Titillium Web', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 3rem;
+            opacity: 0.85;
+        }
+
+        &__h2 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+
+            margin-top: 9%;
+            color: $color-white-2;
+            font-family: 'Titillium Web', sans-serif;
+            text-align: center;
+
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+    }
+
+    &__novices {
+        display: grid;
+        grid-template-columns: repeat(2, 48.5%);
+        grid-template-rows: minmax(10rem, 17%) 83%;
+        grid-gap: 1rem;
+
+        height: 14rem;
+        //grid-template-rows: repeat(4, minmax(10rem, 25%));
+    }
+
+    .novices {
+        display: grid;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+
+        border-radius: .4rem;
+
+        text-align: center;
+
+        &__h2 {
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+
+            color: $color-primary;
+            align-self: center;
+            font-size: 2.2rem;
+            z-index: 9999;
+        }
+
+        &__img {
+            display: grid;
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+
+            border-radius: .4rem;
+
+            background: url("../img/novices__img.jpg") no-repeat center;
+            background-size: cover;
+        }
+
+        &__bg {
+            display: grid;
+            grid-row: 1 / 3;
+            grid-column: 1 / 2;
+
+            border-radius: .4rem;
+
+            background: $color-lg-secondary2;
+            background-blend-mode: screen;
+
+            &-topic {
+                grid-row: 1 / 2;
+                grid-column: 1 / 2;
+
+                background: $color-lg-secondary;
+            }
+        }
+
+        &__figure {
+            display: grid;
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+
+            border-radius: .4rem;
+        }
+
+        ///////////////////////////////////////// LIST DIVISION
+        &-list {
+            display: grid;
+            grid-column: 1 / 2;
+            grid-template-rows: repeat(3, minmax(min-content, 17%));
+            grid-row-gap: 1rem;
+
+            &__figure {
+                display: grid;
+                grid-row: 1 / 2;
+                grid-column: 2 / 3;
+
+                border-radius: .4rem;
+
+                &-1 {
+                    display: grid;
+                    grid-row: 1 / 2;
+                    grid-column: 2 / 3;
+
+                    border-radius: .4rem;
+
+                    overflow: hidden;
+                }
+
+                &-2 {
+                    display: grid;
+                    grid-row: 2 / 3;
+                    grid-column: 2 / 3;
+
+                    border-radius: .4rem;
+
+                    overflow: hidden;
+                }
+
+                &-3 {
+                    display: grid;
+                    grid-row: 3 / 4;
+                    grid-column: 2 / 3;
+
+                    border-radius: .4rem;
+
+                    overflow: hidden;
+                }
+
+            }
+
+            &__img {
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+                border-radius: .4rem;
+            }
+
+            &__figcaption {
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+
+                height: 21%;
+                border-radius: 0 0 .4rem .4rem;
+
+                text-align: center;
+                align-self: flex-end;
+                align-items: center;
+
+                font-size: 1.2rem;
+
+                transition: all .6s linear;
+                overflow: hidden;
+                color: white;
+                background: rgba(0, 0, 0, 0.7);
+            }
+        }
+    }
+
+    .tips {
+        display: grid;
+
+        text-align: center;
+        z-index: 9999;
+
+        @media only screen and (max-width: $bp-largest) {
+            height: 14rem;
+        }
+
+        @media only screen and (min-width: $bp-largest) {
+            grid-row: 1 / 2;
+            grid-column: 2 / 3;
+        }
+
+        &__h2 {
+            display: grid;
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+
+            color: $color-primary;
+            align-self: center;
+            font-size: 2.2rem;
+            z-index: 9999;
+        }
+
+        &__figure {
+            display: grid;
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+        }
+
+        &__img {
+            display: grid;
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+
+            border-radius: .4rem;
+
+            /*background: url("https://sm.ign.com/ign_br/screenshot/default/metro-exodus-1080-announce-screenshot-1-nowatermark-0_uedv.jpg") no-repeat center;*/
+            //https://media.comicbook.com/2017/06/wwgunchartedthelostlegacy-1003238.jpg
+            background: url("../img/tips__img.jpg") no-repeat center;
+            background-size: cover;
+        }
+
+        &__bg {
+            display: grid;
+            grid-row: 1 / 3;
+            grid-column: 1 / 2;
+
+            border-radius: .4rem;
+
+            background: $color-lg-tertiary2;
+            background-blend-mode: screen;
+
+            &-topic {
+                grid-row: 1 / 2;
+                grid-column: 1 / 2;
+
+                background: $color-lg-tertiary;
+            }
+        }
+
+        ///////////////////////////////////////// LIST DIVISION
+
+        &-list {
+            display: grid;
+            grid-template-rows: repeat(3, minmax(min-content, 17%));
+            grid-row-gap: 1rem;
+
+            @media only screen and (max-width: $bp-largest) {}
+
+            @media only screen and (min-width: $bp-largest) {
+                grid-row: 2 / 3;
+                grid-column: 2 / 3;
+            }
+
+            &__figure {
+                display: grid;
+                grid-row: 1 / 2;
+                grid-column: 2 / 3;
+
+                border-radius: .4rem;
+
+                &-1 {
+                    display: grid;
+                    grid-row: 1 / 2;
+                    grid-column: 2 / 3;
+
+                    border-radius: .4rem;
+
+                    overflow: hidden;
+                }
+
+                &-2 {
+                    display: grid;
+                    grid-row: 2 / 3;
+                    grid-column: 2 / 3;
+
+                    border-radius: .4rem;
+
+                    overflow: hidden;
+                }
+
+                &-3 {
+                    display: grid;
+                    grid-row: 3 / 4;
+                    grid-column: 2 / 3;
+
+                    border-radius: .4rem;
+
+                    overflow: hidden;
+                }
+
+            }
+
+            &__img {
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+
+                border-radius: .4rem;
+            }
+
+            &__figcaption {
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+                
+                height: 21%;
+                border-radius: 0 0 .4rem .4rem;
+                
+                align-self: flex-end;
+
+                color: white;
+                background: rgba(0, 0, 0, 0.7);
+
+                font-size: 1.2rem;
+                text-align: center;
+
+                transition: all .6s linear;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.notices {
+
+    &-list {
+        display: grid;
+        grid-template-rows: 3fr 4fr;
+        grid-row-gap: 1rem;
+
+        &__title {
+            align-self: center;
+        }
+
+        &__figure {
+
+            &-1 {
+                display: grid;
+
+                overflow: hidden;
+            }
+
+            &-2 {
+                display: grid;
+
+                overflow: hidden;
+            }
+
+            &-3 {
+                display: grid;
+
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+/*////////////////////////////////////////    ASIDE    ///////////////////////////////////
+///////*/
+.aside {
+    display: grid;
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+    padding: 4%;
+    background-image: linear-gradient(to top, #ffa500, #ffb733);
+
+    @media only screen and (max-width: $bp-large) {
+        display: none;
+    }
+
+    &__hl {
+        text-align: center;
+
+        padding: 5% 0;
+
+        //box-shadow: 0px 2px 2px #ffa500;
+        font-size: .9rem;
+        border-radius: .4rem;
+        font-family: 'Titillium Web', sans-serif;
+    }
+}
+
+///////////////////////////////////////// HIGHLIGHTS SECTION
+.hl {
+
+    &__h2 {
+        margin-bottom: 9%;
+
+        color: $color-white-1;
+
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &__img {
+        border-radius: .4rem;
+    }
+
+    &__figure {
+        margin-bottom: 4%;
+    }
+
+    &__figcaption {
+        padding: 5%;
+        font-size: 1.2rem;
+    }
+}
+
+
+/*////////////////////////////////////////    CONTACT    ////////////////////////////////
+///////*/
+.contact {
+    display: grid;
+    grid-template-rows: repeat(5, minmax(400px, 1fr));
+    padding: 1rem;
+
+    &__info {
+        display: grid;
+        align-items: center;
+    }
+
+    &__send {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(110px, 50%));
+        grid-template-rows: repeat(5, 6rem);
+        grid-gap: 1rem;
+    }
+
+    &__header {
+        display: grid;
+        grid-column: 1 / 4;
+    }
+
+    &__heading {
+        grid-column: 1 / 2;
+        font-size: 1.6rem;
+
+        justify-self: center;
+
+        &-1 {}
+
+        &-2 {}
+    }
+
+    &__description {
+        justify-self: center;
+
+        font-size: 1.3rem;
+        font-weight: 100;
+
+        &-1 {
+            grid-column: 2 / 3;
+        }
+
+        &-2 {
+            grid-column: 3 / 4;
+        }
+    }
+
+    &__title {}
+
+    &__row {
+        display: grid;
+    }
+
+    &__title {
+        font-size: 1.3rem;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 0 1rem;
+        font-family: inherit;
+        font-size: 1.1rem;
+        border: 1px solid darkgray;
+
+        &:focus {
+            border-bottom: 3px solid $color-primary;
+        }
+    }
+
+    &__label {
+        font-family: $font-primary;
+        font-size: 1rem;
+    }
+
+    &__message {
+        grid-column: 1 / 3;
+        height: 25rem;
+
+        &-label {
+            justify-self: center;
+        }
+    }
+}
+
+.aboutus {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 3rem;
+
+    padding: 5rem;
+
+    &__whatis {}
+
+    &__socialmedias {
+
+        &-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
+        }
+    }
+
+    &__youtube {}
+
+    &__streaming {}
+
+    &__title {
+        padding-bottom: 5rem;
+    }
+
+    &__sub-title {
+        padding-bottom: 5rem;
+    }
+}
+
+.logo {
+    padding: .1rem;
+}
+
+.footer {
+    padding: 2rem;
+
+    background: $color-primary;
+
+    font-size: 1.3rem;
+
+    &__logo {
+        display: grid;
+
+        width: 11rem;
+    }
+
+    &__nav {
+        display: grid;
+        grid-template-columns: 30% repeat(2, 30%);
+        justify-items: center;
+        width: 100%;
+    }
+
+    &__list {
+        display: grid;
+
+        align-items: center;
+
+        list-style-type: none;
+    }
+
+    &__item {}
+}
+
+main figure:hover img {
+    z-index: -2;
+    transition: all .6s linear;
+    transform: scale(1.07);
+}
+
+main figure:hover .novices__bg,
+main figure:hover .tips__bg {
+    transition: all 1s linear;
+
+    background: none;
+}
